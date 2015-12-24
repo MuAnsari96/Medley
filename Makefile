@@ -41,7 +41,7 @@ obj/test.o: $(addprefix $(AUDIO), $(PSRC))
 
 
 clean:
-	rm -f $(APP) $(TARBALL) *~ obj/*.o src/*/*~ src/*/.*~
+	rm -f $(APP) $(TARBALL) .*~ *~ obj/*.o* src/*/*~ src/*/.*~
 
 
 tar: 
