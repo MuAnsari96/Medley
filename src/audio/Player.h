@@ -7,18 +7,20 @@
 class Player {
 
 private:
-    Player* instance;
+    static Player* instance;
 
-    libvlc_instance_t* iib;
+    libvlc_instance_t* lib;
 
     libvlc_media_player_t* p;
 
     Player();
 
-    ~PLayer();
+    ~Player();
 
 public:
-    Player getInstance();
+    static Player* getInstance();
+
+    static void destroyInstance();
 
     void setSong(const char* songPath);
 
@@ -40,5 +42,7 @@ public:
     libvlc_time_t getLength();
 
 };
+
+
 
 #endif

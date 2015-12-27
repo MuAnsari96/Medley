@@ -1,58 +1,65 @@
 #include "Player.h"
 
+Player* Player::instance;
 // Constructor and Destructor
 Player::Player() {
-    lib = libvlc_new();
-    p = libvlc_media_player_new(instance);
+    lib = libvlc_new(0, 0);
+    p = libvlc_media_player_new(lib);
 }
 
-Player::~PLayer() {
+Player::~Player() {
     libvlc_media_player_stop(p);
     libvlc_media_player_release(p);
     libvlc_release(lib);
 }
 
-Player Player::getInstance() {
+Player* Player::getInstance() {
     if (!instance)
         instance = new Player();
     return instance;
 }
 
-void setSong(const char* songPath) {
-    libvlc_media song = libvlc_media_new_path(lib, songPath);
-    libvlc_media_set_media(p, song);
+void Player::destroyInstance() {
+    if (instance)
+        delete instance;
+    return;
+}
+
+void Player::setSong(const char* songPath) {
+    libvlc_media_t* song = libvlc_media_new_path(lib, songPath);
+    libvlc_media_player_set_media(p, song);
     libvlc_media_release(song);
 }
 
-void setTime(libvlc_time_t time) {
+void Player::setTime(libvlc_time_t time) {
     libvlc_media_player_set_time(p, time);
 }
 
-void setPercent(float percent) {
+void Player::setPercent(float percent) {
     libvlc_media_player_set_position(p, percent);
 }
 
-void togglePause() {
+void Player::togglePause() {
     libvlc_media_player_pause(p);
 }
 
-void stop() {
+void Player::stop() {
     libvlc_media_player_stop(p);
 }
 
 
-libvlc_media_t* getSong() {
+libvlc_media_t* Player::getSong() {
     return libvlc_media_player_get_media(p);
 }
 
-libvlc_time_t getTime() {
+libvlc_time_t Player::getTime() {
     return libvlc_media_player_get_time(p);
 }
 
-float getPercent() {
+float Player::getPercent() {
     return libvlc_media_player_get_position(p);
 }
 
-libvlc_time_t getLength() {
+libvlc_time_t Player::getLength() {
     return libvlc_media_player_get_length(p);
 }
