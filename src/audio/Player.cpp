@@ -29,7 +29,6 @@ void Player::setSong(const char* songPath) {
     libvlc_media_t* song = libvlc_media_new_path(lib, songPath);
     libvlc_media_player_set_media(p, song);
     libvlc_media_release(song);
-    std::cout << "Set song to " << songPath << std::endl;
 }
 
 void Player::setTime(libvlc_time_t time) {
@@ -42,7 +41,6 @@ void Player::setPercent(float percent) {
 
 void Player::togglePause() {
     libvlc_media_player_pause(p);
-    std::cout << "Toggled pause\n";
 }
 
 void Player::pause() {

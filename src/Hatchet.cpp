@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
         std::string cont = "";
         while (cont != "n") {
             std::cin >> cont;
-            player->pause();
+            player->togglePause();
         }
 
     }
