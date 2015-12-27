@@ -2,7 +2,7 @@
 APP = Hatchet
 
 # Object files 
-OBJS = Player.o
+OBJS = Player.o Hatchet.o
 
 # g++ options and flags
 CXX = g++
@@ -35,13 +35,13 @@ BACKUP = build_$$(date +%Y%m%d_%H%M%S).tar
 all: $(APP)
 
 $(APP): $(addprefix $(OBJDIR), $(OBJS))
-	$(CXX) $(LFLAGS) -o $@ $<
+	$(CXX) $(LFLAGS) -o $@ $(addprefix $(OBJDIR), $(OBJS))
 
 obj/Hatchet.o: src/Hatchet.cpp
 	$(CXX) $(CFLAGS) src/Hatchet.cpp $(OUT)
 
 obj/Player.o: $(addprefix $(AUDIO), $(PSRC))
-	$(CXX) $(CFLAGS) $(AUDIO)/Player.cpp $(OUT)
+	$(CXX) $(CFLAGS) $(AUDIO)Player.cpp $(OUT)
 
 clean:
 	rm -f $(APP) $(TARBALL) 
