@@ -1,25 +1,26 @@
 # Application Name-- Still TBA!
-APP = app
+APP = Hatchet
 
 # Object files 
-OBJS = test.o
+OBJS = Player.o
 
 # g++ options and flags
 CXX = g++
 DEBUG = -g
 CHECKS = -Wall -Werror 
 INCLUDES = -lvlc 
-CFLAGS = $(CHECKS) $(INCLUDES) -c
-LFLAGS = $(CHECKS) $(INCLUDES)
+CFLAGS = -std=c++11 $(CHECKS) $(INCLUDES) -c
+LFLAGS = -std=c++11 $(CHECKS) $(INCLUDES)
 OUT = -o $@
 
 # Relevant directories
 SRCDIR = src/
+BINDIR = bin/
 OBJDIR = obj/
 AUDIO = $(SRCDIR)audio/
 
 # Relevant source files, by object
-PSRC = test.cpp
+PSRC = Player.cpp Player.h
 
 # Extras 
 TARBALL = $(APP)_src.tar
@@ -34,15 +35,18 @@ BACKUP = build_$$(date +%Y%m%d_%H%M%S).tar
 all: $(APP)
 
 $(APP): $(addprefix $(OBJDIR), $(OBJS))
-	$(CXX) -o $@ $< $(LFLAGS)
+	$(CXX) $(LFLAGS) -o $@ $<
 
-obj/test.o: $(addprefix $(AUDIO), $(PSRC))
-	$(CXX) $(CFLAGS) $(AUDIO)/test.cpp $(OUT)
+obj/Hatchet.o: src/Hatchet.cpp
+	$(CXX) $(CFLAGS) src/Hatchet.cpp $(OUT)
 
+obj/Player.o: $(addprefix $(AUDIO), $(PSRC))
+	$(CXX) $(CFLAGS) $(AUDIO)/Player.cpp $(OUT)
 
 clean:
-	rm -f $(APP) $(TARBALL) .*~ *~ obj/*.o* src/*/*~ src/*/.*~
-
+	rm -f $(APP) $(TARBALL) 
+	rm -f .*~ *~ src/*~ src/*/*~ src/*/.*~ 
+	rm -f obj/*.o*
 
 tar: 
 	tar -cvf $(TARBALL) $(SRCDIR)*
