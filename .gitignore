@@ -33,3 +33,4 @@ obj/*
 *~
 src/*/*~
 CMakeLists.txt
+.idea/
