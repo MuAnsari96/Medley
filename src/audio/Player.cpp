@@ -43,6 +43,14 @@ void Player::togglePause() {
     libvlc_media_player_pause(p);
 }
 
+void Player::pause() {
+    libvlc_media_player_set_pause(p, 1);
+}
+
+void Player::play() {
+    libvlc_media_player_play(p);
+}
+
 void Player::stop() {
     libvlc_media_player_stop(p);
 }

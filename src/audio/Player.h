@@ -3,6 +3,7 @@
 
 #include <vlc/vlc.h>
 #include <unistd.h>
+#include <iostream>
 
 class Player {
 
@@ -30,7 +31,11 @@ public:
 
     void togglePause();
 
+    void pause();
+
     void stop();
+
+    void play();
 
 
     libvlc_media_t* getSong();
