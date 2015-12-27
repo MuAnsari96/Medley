@@ -17,7 +17,7 @@ OUT = -o $@
 SRCDIR = src/
 BINDIR = bin/
 OBJDIR = obj/
-AUDIO = $(SRCDIR)audio/
+SOUND = $(SRCDIR)sound/
 
 # Relevant source files, by object
 PSRC = Player.cpp Player.h
@@ -40,8 +40,8 @@ $(APP): $(addprefix $(OBJDIR), $(OBJS))
 obj/Hatchet.o: src/Hatchet.cpp
 	$(CXX) $(CFLAGS) src/Hatchet.cpp $(OUT)
 
-obj/Player.o: $(addprefix $(AUDIO), $(PSRC))
-	$(CXX) $(CFLAGS) $(AUDIO)Player.cpp $(OUT)
+obj/Player.o: $(addprefix $(SOUND), $(PSRC))
+	$(CXX) $(CFLAGS) $(SOUND)Player.cpp $(OUT)
 
 clean:
 	rm -f $(APP) $(TARBALL) 

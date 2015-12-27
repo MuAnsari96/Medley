@@ -1,4 +1,4 @@
-#include "audio/Player.h"
+#include "sound/Player.h"
 
 int main(int argc, char* argv[]) {
     Player* player = Player::getInstance();
