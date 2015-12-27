@@ -32,3 +32,4 @@ obj/*
 *.tar
 *~
 src/*/*~
+CMakeLists.txt
