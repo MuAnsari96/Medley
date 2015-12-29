@@ -34,7 +34,6 @@ obj/*
 src/*/*~
 
 # IDE files
-CMakeLists.txt
 .idea/
 
 src/interface/*.pro*
