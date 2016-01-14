@@ -33,6 +33,9 @@ obj/*
 *~
 src/*/*~
 
+Medley.files
+Medley.includes
+Medley.creator
+Medley.config
 # IDE files
 .idea/
-./Medley.*
