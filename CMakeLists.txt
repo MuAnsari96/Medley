@@ -4,9 +4,10 @@ project(Medley)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lvlc")
 
 set(SOURCE_FILES
-    src/sound/Player.cpp
-    src/sound/Player.h
-    src/Medley.cpp)
+        src/Medley.cpp
+        src/sound/Player.cpp
+        src/interface/MedleyUI.cpp
+        src/interface/MedleyUI.h)
 
 set(CMAKE_AUTOMOC ON)
 
