@@ -1,8 +1,8 @@
 # Application Name-- Still TBA!
-APP = Hatchet
+APP = Medley
 
 # Object files 
-OBJS = Player.o Hatchet.o
+OBJS = Player.o Medley.o
 
 # g++ options and flags
 CXX = g++
@@ -37,8 +37,8 @@ all: $(APP)
 $(APP): $(addprefix $(OBJDIR), $(OBJS))
 	$(CXX) $(LFLAGS) -o $@ $(addprefix $(OBJDIR), $(OBJS))
 
-obj/Hatchet.o: src/Hatchet.cpp
-	$(CXX) $(CFLAGS) src/Hatchet.cpp $(OUT)
+obj/Medley.o: src/Medley.cpp
+	$(CXX) $(CFLAGS) src/Medley.cpp $(OUT)
 
 obj/Player.o: $(addprefix $(SOUND), $(PSRC))
 	$(CXX) $(CFLAGS) $(SOUND)Player.cpp $(OUT)

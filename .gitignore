@@ -35,7 +35,4 @@ src/*/*~
 
 # IDE files
 .idea/
-
-src/interface/*.pro*
-
-
+./Medley.*
