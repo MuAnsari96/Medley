@@ -33,9 +33,12 @@ obj/*
 *~
 src/*/*~
 
+# IDE files
+.idea/
 Medley.files
 Medley.includes
 Medley.creator
 Medley.config
-# IDE files
-.idea/
+
+#  CMake files
+CMakeFiles/*
