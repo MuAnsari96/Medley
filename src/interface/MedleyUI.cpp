@@ -10,5 +10,11 @@ MedleyUI::MedleyUI(QWidget *parent) :
 
 MedleyUI::~MedleyUI()
 {
+    Player::destroyInstance();
     delete ui;
+}
+
+void MedleyUI::on_playButton_clicked()  {
+    player = Player::getInstance();
+    player->togglePause();
 }
