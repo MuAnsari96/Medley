@@ -29,6 +29,8 @@ public:
 
     void setPercent(float percent);
 
+    void setVolume(int percent);
+
     void togglePause();
 
     void pause();

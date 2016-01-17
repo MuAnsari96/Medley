@@ -15,6 +15,5 @@ MedleyUI::~MedleyUI()
 }
 
 void MedleyUI::on_playButton_clicked()  {
-    player = Player::getInstance();
-    player->togglePause();
+    std::cout << "Hello\n";
 }
