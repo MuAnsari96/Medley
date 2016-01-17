@@ -56,6 +56,10 @@ void Player::play() {
     libvlc_media_player_play(p);
 }
 
+bool Player::isPlaying() {
+    return libvlc_media_player_is_playing(p);
+}
+
 void Player::stop() {
     libvlc_media_player_stop(p);
 }

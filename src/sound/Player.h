@@ -39,6 +39,8 @@ public:
 
     void play();
 
+    bool isPlaying();
+
 
     libvlc_media_t* getSong();
 
