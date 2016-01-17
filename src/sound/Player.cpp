@@ -40,7 +40,6 @@ void Player::setPercent(float percent) {
 }
 
 void Player::setVolume(int percent) {
-    std::cout << "hello";
     libvlc_audio_set_volume(p, percent);
 }
 
