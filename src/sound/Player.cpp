@@ -43,6 +43,10 @@ void Player::setVolume(int percent) {
     libvlc_audio_set_volume(p, percent);
 }
 
+int Player::getVolume() {
+    return libvlc_audio_get_volume(p);
+}
+
 void Player::togglePause() {
     libvlc_media_player_pause(p);
 }
@@ -56,7 +60,7 @@ void Player::play() {
 }
 
 bool Player::isPlaying() {
-    return libvlc_media_player_is_playing(p);
+    return bool(libvlc_media_player_is_playing(p));
 }
 
 void Player::stop() {

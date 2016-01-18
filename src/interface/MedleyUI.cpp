@@ -11,6 +11,7 @@ MedleyUI::MedleyUI(QWidget *parent) :
 }
 
 MedleyUI::~MedleyUI() {
+    player->stop();
     Player::destroyInstance();
     delete ui;
 }
@@ -19,16 +20,13 @@ void MedleyUI::on_playToggle_clicked() {
     if (!player->isPlaying())
         player->play();
     else
-        player->togglePause(); 
+        player->togglePause();
 }
 
 void MedleyUI::on_actionOpen_triggered() {
-    QString file = QFileDialog::getOpenFileName(this,
-                                                    tr("Select a Song"),
-                                                    "/home/",
-                                                    tr("Songs (*.mp3)"));
+    QString file = QFileDialog::getOpenFileName(this, tr("Select a Song"),
+                                                "/home/", tr("Songs (*.mp3)"));
     if (!file.isNull()) {
-        player->stop();
         player->setSong(file.toStdString().c_str());
         player->play();
     }

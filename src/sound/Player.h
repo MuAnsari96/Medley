@@ -50,6 +50,7 @@ public:
 
     libvlc_time_t getLength();
 
+    int getVolume();
 };
 
 
