@@ -41,6 +41,10 @@ public:
 
     bool isPlaying();
 
+    bool isPaused();
+
+    bool isUseable();
+
 
     libvlc_media_t* getSong();
 

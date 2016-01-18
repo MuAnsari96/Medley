@@ -19,19 +19,24 @@ public:
     ~MedleyUI();
 
 private slots:
-    void on_playToggle_clicked();
-    void on_actionOpen_triggered();
-    void on_actionExit_triggered();
     void on_volumeSlider_valueChanged(int percent);
     void on_seekSlider_sliderReleased();
     void updateGUI();
     void callNoteworthy();
+    void open();
+    void quit();
+    void mute();
+    void stop();
+    void togglePlay();
+    void on_playToggle_toggled(bool checked);
 
 private:
     Ui::MedleyUI *ui;
     Player* player;
     QTimer *updateTimer;
     void initConnections();
+    void play();
+    void pause();
 };
 
 #endif // MEDLEYUI_H

@@ -6,6 +6,7 @@ MedleyUI::MedleyUI(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MedleyUI) {
     player = Player::getInstance();
+    player->stop();
     player->setVolume(50);
     ui->setupUi(this);
     initConnections();
@@ -24,6 +25,18 @@ void MedleyUI::initConnections() {
 
     connect(ui->noteworthyBox, SIGNAL(returnPressed()), this, SLOT(callNoteworthy()));
     connect(ui->noteworthyButton, SIGNAL(clicked()), this, SLOT(callNoteworthy()));
+
+    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(quit()));
+    connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(open()));
+
+    connect(ui->actionMute, SIGNAL(triggered()), this, SLOT(mute()));
+    connect(ui->actionStop, SIGNAL(triggered()), this, SLOT(stop()));
+
+    connect(ui->actionPlayPause, SIGNAL(triggered()), this, SLOT(togglePlay()));
+}
+
+void MedleyUI::quit() {
+    QCoreApplication::quit();
 }
 
 void MedleyUI::updateGUI() {
@@ -31,25 +44,58 @@ void MedleyUI::updateGUI() {
         ui->seekSlider->setValue(player->getPercent());
 }
 
-void MedleyUI::on_playToggle_clicked() {
-    if (!player->isPlaying())
-        player->play();
-    else
-        player->togglePause();
-}
-
-void MedleyUI::on_actionOpen_triggered() {
+void MedleyUI::open() {
     QString file = QFileDialog::getOpenFileName(this, tr("Select a Song"),
                                                 "/home/", tr("Songs (*.mp3)"));
     if (!file.isNull()) {
         ui->seekSlider->setValue(0);
         player->setSong(file.toStdString().c_str());
-        player->play();
+        play();
     }
 }
 
-void MedleyUI::on_actionExit_triggered() {
-    QCoreApplication::quit();
+void MedleyUI::togglePlay() {
+    if (player->isPaused())
+        play();
+    else if (player->isPlaying())
+        pause();
+}
+
+void MedleyUI::play() {
+    ui->playToggle->setChecked(true);
+    ui->actionPlayPause->setEnabled(true);
+    ui->actionPlayPause->setText(tr("Pause"));
+    player->play();
+}
+
+void MedleyUI::pause() {
+    ui->playToggle->setChecked(false);
+    ui->actionPlayPause->setEnabled(true);
+    ui->actionPlayPause->setText(tr("Play"));
+    player->pause();
+}
+
+void MedleyUI::on_playToggle_toggled(bool checked) {
+    if (!player->isUseable()) {
+        ui->playToggle->setEnabled(false);
+        return;
+    }
+    if (checked)
+        play();
+    else
+        pause();
+}
+
+void MedleyUI::mute() {
+    ui->volumeSlider->setValue(0);
+    player->setVolume(0);
+}
+
+void MedleyUI::stop() {
+    pause();
+    player->stop();
+    ui->playToggle->setEnabled(false);
+    ui->actionPlayPause->setEnabled(false);
 }
 
 void MedleyUI::on_volumeSlider_valueChanged(int percent) {
@@ -57,7 +103,10 @@ void MedleyUI::on_volumeSlider_valueChanged(int percent) {
 }
 
 void MedleyUI::on_seekSlider_sliderReleased() {
-    player->setPercent(ui->seekSlider->value());
+    if (!player->isUseable())
+        ui->seekSlider->setValue(0);
+    else
+        player->setPercent(ui->seekSlider->value());
 }
 
 void MedleyUI::callNoteworthy() {

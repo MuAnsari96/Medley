@@ -60,7 +60,15 @@ void Player::play() {
 }
 
 bool Player::isPlaying() {
-    return bool(libvlc_media_player_is_playing(p));
+    return libvlc_media_player_get_state(p) == 3;
+}
+
+bool Player::isPaused() {
+    return libvlc_media_player_get_state(p) == 4;
+}
+
+bool Player::isUseable() {
+    return isPlaying() || isPaused();
 }
 
 void Player::stop() {

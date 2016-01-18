@@ -244,15 +244,6 @@
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menuMusic">
-    <property name="title">
-     <string>Music</string>
-    </property>
-    <addaction name="actionPlayPause"/>
-    <addaction name="actionStop"/>
-    <addaction name="separator"/>
-    <addaction name="actionMute"/>
-   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
@@ -267,6 +258,15 @@
      <string>Options</string>
     </property>
     <addaction name="actionSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuMusic">
+    <property name="title">
+     <string>Music</string>
+    </property>
+    <addaction name="actionPlayPause"/>
+    <addaction name="actionStop"/>
+    <addaction name="separator"/>
+    <addaction name="actionMute"/>
    </widget>
    <addaction name="menuMedley_Player"/>
    <addaction name="menuMusic"/>
@@ -291,16 +291,14 @@
    </property>
   </action>
   <action name="actionPlayPause">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
-    <string>Play/Pause</string>
+    <string>Play</string>
    </property>
    <property name="shortcut">
     <string>Space</string>
-   </property>
-  </action>
-  <action name="actionPause">
-   <property name="text">
-    <string>Pause</string>
    </property>
   </action>
   <action name="actionStop">
