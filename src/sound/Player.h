@@ -27,7 +27,7 @@ public:
 
     void setTime(libvlc_time_t time);
 
-    void setPercent(float percent);
+    void setPercent(int percent);
 
     void setVolume(int percent);
 
@@ -46,7 +46,7 @@ public:
 
     libvlc_time_t getTime();
 
-    float getPercent();
+    int getPercent();
 
     libvlc_time_t getLength();
 

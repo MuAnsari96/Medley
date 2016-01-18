@@ -35,8 +35,8 @@ void Player::setTime(libvlc_time_t time) {
     libvlc_media_player_set_time(p, time);
 }
 
-void Player::setPercent(float percent) {
-    libvlc_media_player_set_position(p, percent);
+void Player::setPercent(int percent) {
+    libvlc_media_player_set_position(p, float(percent)/100);
 }
 
 void Player::setVolume(int percent) {
@@ -76,8 +76,8 @@ libvlc_time_t Player::getTime() {
     return libvlc_media_player_get_time(p);
 }
 
-float Player::getPercent() {
-    return libvlc_media_player_get_position(p);
+int Player::getPercent() {
+    return int(100*libvlc_media_player_get_position(p));
 }
 
 libvlc_time_t Player::getLength() {
