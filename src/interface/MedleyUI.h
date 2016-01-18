@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QString>
+#include <QTimer>
 #include <src/sound/Player.h>
 
 namespace Ui {
@@ -23,13 +24,14 @@ private slots:
     void on_actionExit_triggered();
     void on_volumeSlider_valueChanged(int percent);
     void on_seekSlider_sliderReleased();
-    void on_noteworthyButton_clicked();
-    void on_noteworthyBox_returnPressed();
+    void updateGUI();
+    void callNoteworthy();
 
 private:
     Ui::MedleyUI *ui;
     Player* player;
-    void callNoteworthy();
+    QTimer *updateTimer;
+    void initConnections();
 };
 
 #endif // MEDLEYUI_H

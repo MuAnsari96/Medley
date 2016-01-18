@@ -77,7 +77,7 @@ libvlc_time_t Player::getTime() {
 }
 
 int Player::getPercent() {
-    return int(100*libvlc_media_player_get_position(p));
+    return std::max(0, int(100*libvlc_media_player_get_position(p)));
 }
 
 libvlc_time_t Player::getLength() {
