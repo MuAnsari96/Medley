@@ -4,27 +4,25 @@
 
 MedleyUI::MedleyUI(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MedleyUI)
-{
+    ui(new Ui::MedleyUI) {
     player = Player::getInstance();
     player->setVolume(50);
     ui->setupUi(this);
 }
 
-MedleyUI::~MedleyUI()
-{
+MedleyUI::~MedleyUI() {
     Player::destroyInstance();
     delete ui;
 }
 
-void MedleyUI::on_playButton_clicked()  {
+void MedleyUI::on_playToggle_clicked() {
     if (!player->isPlaying())
         player->play();
     else
         player->togglePause(); 
 }
 
-void MedleyUI::on_actionOpen_triggered()  {
+void MedleyUI::on_actionOpen_triggered() {
     QString file = QFileDialog::getOpenFileName(this,
                                                     tr("Select a Song"),
                                                     "/home/",
@@ -36,6 +34,11 @@ void MedleyUI::on_actionOpen_triggered()  {
     }
 }
 
-void MedleyUI::on_actionExit_triggered()  {
+void MedleyUI::on_actionExit_triggered() {
     QCoreApplication::quit();
 }
+
+void MedleyUI::on_volumeSlider_valueChanged(int percent) {
+    player->setVolume(percent);
+}
+

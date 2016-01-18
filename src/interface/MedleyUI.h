@@ -10,8 +10,7 @@ namespace Ui {
 class MedleyUI;
 }
 
-class MedleyUI : public QMainWindow
-{
+class MedleyUI : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -19,9 +18,10 @@ public:
     ~MedleyUI();
 
 private slots:
-    void on_playButton_clicked();
+    void on_playToggle_clicked();
     void on_actionOpen_triggered();
     void on_actionExit_triggered();
+    void on_volumeSlider_valueChanged(int percent);
 
 private:
     Ui::MedleyUI *ui;
