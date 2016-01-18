@@ -1,0 +1,7 @@
+<RCC>
+    <qresource>
+        <file>assets/icons/prev.png</file>
+        <file>assets/icons/play.png</file>
+        <file>assets/icons/next.png</file>
+    </qresource>
+</RCC>
