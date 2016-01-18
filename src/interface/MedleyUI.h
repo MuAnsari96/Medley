@@ -19,7 +19,6 @@ public:
     ~MedleyUI();
 
 private slots:
-    void on_volumeSlider_valueChanged(int percent);
     void on_seekSlider_sliderReleased();
     void updateGUI();
     void callNoteworthy();

@@ -65,6 +65,8 @@ void MedleyUI::play() {
     ui->playToggle->setChecked(true);
     ui->actionPlayPause->setEnabled(true);
     ui->actionPlayPause->setText(tr("Pause"));
+    ui->seekSlider->setEnabled(true);
+    ui->playToggle->setEnabled(true);
     player->play();
 }
 
@@ -76,10 +78,6 @@ void MedleyUI::pause() {
 }
 
 void MedleyUI::on_playToggle_toggled(bool checked) {
-    if (!player->isUseable()) {
-        ui->playToggle->setEnabled(false);
-        return;
-    }
     if (checked)
         play();
     else
@@ -96,17 +94,13 @@ void MedleyUI::stop() {
     player->stop();
     ui->playToggle->setEnabled(false);
     ui->actionPlayPause->setEnabled(false);
-}
-
-void MedleyUI::on_volumeSlider_valueChanged(int percent) {
-    player->setVolume(percent);
+    ui->seekSlider->setValue(0);
+    ui->seekSlider->setEnabled(false);
+    ui->playToggle->setEnabled(false);
 }
 
 void MedleyUI::on_seekSlider_sliderReleased() {
-    if (!player->isUseable())
-        ui->seekSlider->setValue(0);
-    else
-        player->setPercent(ui->seekSlider->value());
+    player->setPercent(ui->seekSlider->value());
 }
 
 void MedleyUI::callNoteworthy() {
