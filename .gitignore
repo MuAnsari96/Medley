@@ -39,6 +39,7 @@ Medley.files
 Medley.includes
 Medley.creator
 Medley.config
+*.autosave
 
 #  CMake files
 CMakeFiles/*
