@@ -40,3 +40,20 @@ void MedleyUI::on_volumeSlider_valueChanged(int percent) {
     player->setVolume(percent);
 }
 
+
+void MedleyUI::on_seekSlider_sliderReleased() {
+    player->setPercent(ui->seekSlider->value());
+}
+
+void MedleyUI::callNoteworthy() {
+    // Placeholder until Noteworthy works
+    QString query = ui->noteworthyBox->text();
+    std::cout << query.toStdString() << std::endl;
+}
+void MedleyUI::on_noteworthyButton_clicked() {
+    callNoteworthy();
+}
+
+void MedleyUI::on_noteworthyBox_returnPressed() {
+    callNoteworthy();
+}

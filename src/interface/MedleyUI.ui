@@ -148,6 +148,18 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="singleStep">
+     <number>0</number>
+    </property>
+    <property name="pageStep">
+     <number>0</number>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="sliderPosition">
+     <number>0</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
