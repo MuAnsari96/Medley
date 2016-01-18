@@ -1,3 +1,4 @@
+#include <QtCore/qcoreapplication.h>
 #include "MedleyUI.h"
 #include "ui_MedleyUI.h"
 
@@ -6,7 +7,6 @@ MedleyUI::MedleyUI(QWidget *parent) :
     ui(new Ui::MedleyUI)
 {
     player = Player::getInstance();
-    player->setSong("/home/mustafa/Music/a.mp3");
     player->setVolume(50);
     ui->setupUi(this);
 }
@@ -21,6 +21,21 @@ void MedleyUI::on_playButton_clicked()  {
     if (!player->isPlaying())
         player->play();
     else
-        player->togglePause();
+        player->togglePause(); 
+}
 
+void MedleyUI::on_actionOpen_triggered()  {
+    QString file = QFileDialog::getOpenFileName(this,
+                                                    tr("Select a Song"),
+                                                    "/home/",
+                                                    tr("Songs (*.mp3)"));
+    if (!file.isNull()) {
+        player->stop();
+        player->setSong(file.toStdString().c_str());
+        player->play();
+    }
+}
+
+void MedleyUI::on_actionExit_triggered()  {
+    QCoreApplication::quit();
 }

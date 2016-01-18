@@ -2,6 +2,8 @@
 #define MEDLEYUI_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QString>
 #include <src/sound/Player.h>
 
 namespace Ui {
@@ -18,6 +20,8 @@ public:
 
 private slots:
     void on_playButton_clicked();
+    void on_actionOpen_triggered();
+    void on_actionExit_triggered();
 
 private:
     Ui::MedleyUI *ui;
