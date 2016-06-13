@@ -1,17 +1,13 @@
 #Medley
-An intelligent music player
+An intelligent music player. NOTE: Development on this project has been halted temporarily in favor of a web-based player.
 
-## Music Online
+## Overview
 
-These days, pretty much all of the music we need is online, but sometimes its hard 
-to keep it all in the same place; Spotify for the mainstream music, Youtube for the
-new releases and Soundcloud for all those original tracks! Medley unifies all of 
-these services with a sleek desktop interface, without any hassle! With Medley, 
-you can
+Medley is a music aggregation service that allows users to easily listen to and find music across a 
+variety of online sources. Inspired by the Tomahawk music player, Medley can be used to:
    
-* Create playlists across services
+* Create playlists across music services
 * Search for music and find the best stream on the internet
-* Get recommendations based on what other users like
-* And listen to all of your favorite tunes!
+* Get recommendations based on other user preferences
 
 
